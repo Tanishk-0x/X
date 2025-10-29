@@ -85,4 +85,28 @@ const Login = async (req , res) => {
     }
 }
 
-module.exports = {Signup , Login}
+
+//~---------------LogOut---------------
+const LogOut = async (req , res) => {
+    try {
+        res.clearCookie('token' , {
+            httpOnly : true , 
+            sameSite: 'None',
+            secure: true,
+        }); 
+
+        res.status(200).json({
+            success : true , 
+            message : "LogOut SuccessFully"
+        });
+    }
+    
+    catch (error) {
+        res.status(500).json({
+            success : false , 
+            message : "An Error While Logout"
+        })
+    }
+}
+
+module.exports = {Signup , Login , LogOut}
