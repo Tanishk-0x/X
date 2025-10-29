@@ -1,6 +1,7 @@
 const express = require('express') ; 
 const aiRoute = require('./src/Gemini/ai.route') ; 
 const app = express() ; 
+require('./src/Config/database').dbConnect() ; 
 
 const PORT = 5000 ; 
 
