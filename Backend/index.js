@@ -3,6 +3,7 @@ const aiRoute = require('./src/Gemini/ai.route') ;
 const authRoutes = require('./src/Routes/authRoutes') ;  
 const app = express() ; 
 require('./src/Config/database').dbConnect() ; 
+require('dotenv').config() ; 
 
 const PORT = 5000 ; 
 

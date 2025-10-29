@@ -1,6 +1,7 @@
+require('dotenv').config() ; 
 const mongoose = require('mongoose') ; 
 
-const MONGO_URL = "mongodb+srv://spiritualguruji007:5MAS6wEv7Fnq43uQ@trybyown.dravmm4.mongodb.net/?retryWrites=true&w=majority&appName=X" ;
+const MONGO_URL = process.env.MONGOURL ;
 
 exports.dbConnect = () => {
 
