@@ -97,14 +97,14 @@ const LogOut = async (req , res) => {
 
         res.status(200).json({
             success : true , 
-            message : "LogOut SuccessFully"
+            message : "LogOut SuccessFully✅"
         });
     }
     
     catch (error) {
         res.status(500).json({
             success : false , 
-            message : "An Error While LogOut"
+            message : "An Error While LogOut❌"
         })
     }
 }
