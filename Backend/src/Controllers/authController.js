@@ -1,6 +1,7 @@
 const User = require('../Models/UserModel'); 
 const jwt = require('jsonwebtoken'); 
 const bcrypt = require('bcrypt'); 
+require('dotenv').config(); 
 
 //~-------------Signup-------------------
 
@@ -60,7 +61,7 @@ const Login = async (req , res) => {
             })
         }
 
-        const JWT_SECRET = "Tanishk009"; 
+        const JWT_SECRET = process.env.JWT_SECRET ;  
         const token = jwt.sign({id : user._id} , JWT_SECRET); 
 
         res.cookie("token" , token , {
