@@ -25,7 +25,13 @@ const UserSchema = new mongoose.Schema({
     }, 
     previous : [
         {
-            type : String ,
+            value : {
+                type : String 
+            }, 
+            time : {
+                type : Date , 
+                default : Date.now() 
+            }
         }
     ]
 

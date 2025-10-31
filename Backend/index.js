@@ -4,10 +4,12 @@ const authRoutes = require('./src/Routes/authRoutes') ;
 const app = express() ; 
 require('./src/Config/database').dbConnect() ; 
 require('dotenv').config() ; 
+const cookieParser = require('cookie-parser'); 
 
 const PORT = 5000 ; 
 
 app.use(express.json()); 
+app.use(cookieParser()); 
 
 app.use('/ai' , aiRoute) ; 
 app.use('/auth' , authRoutes) ; 
