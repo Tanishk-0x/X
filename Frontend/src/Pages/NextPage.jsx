@@ -68,7 +68,7 @@ const NextPage = () => {
 
     useEffect(() => {
         const fetchDetails = async () => {
-            const res = await axios.get("http://localhost:5000/user/details" , 
+            const res = await axios.get("https://prepdrilbackend.onrender.com/user/details" , 
                 {withCredentials : true}
             ); 
 
@@ -85,7 +85,7 @@ const NextPage = () => {
 
     const LogOut = async () => {
         setLoading(true) ; 
-         await axios.get("http://localhost:5000/auth/logout" ,
+         await axios.get("https://prepdrilbackend.onrender.com/auth/logout" ,
              {withCredentials : true}); 
              navigate('/login') ; 
         setLoading(false) ; 
@@ -97,7 +97,7 @@ const NextPage = () => {
             setLoading(true);
             setGenerating(true); 
             const res = await axios.post(
-                "http://localhost:5000/ai/getresponse",
+                "https://prepdrilbackend.onrender.com/ai/getresponse",
                 { code: code, no: numberOfQue, flag: flag , diff : diff },
                 { withCredentials: true }
             );
@@ -150,7 +150,7 @@ const NextPage = () => {
         try {
             setLoading(true) ; 
             const payload = JSON.stringify(submission);
-            const res = await axios.post("http://localhost:5000/ai/getresponse" , 
+            const res = await axios.post("https://prepdrilbackend.onrender.com/ai/getresponse" , 
                 { code: payload, no: numberOfQue, flag: '1' , diff : "" } , {withCredentials : true} 
             ); 
             
@@ -164,7 +164,7 @@ const NextPage = () => {
             const scr = parseInt(Data.score) ; 
             const score = scr - hintUsed ; 
 
-            const response = await axios.post("http://localhost:5000/user/scr" , 
+            const response = await axios.post("https://prepdrilbackend.onrender.com/user/scr" , 
                 {score : score , code : code  } , {withCredentials : true} 
             ); 
             setTotalScore(response.data.score);

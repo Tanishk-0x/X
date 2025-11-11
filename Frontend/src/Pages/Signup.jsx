@@ -18,7 +18,7 @@ const Signup = () => {
   const Signup = async () => {
     try {
         setLoading(true) ; 
-        const res = await axios.post("http://localhost:5000/auth/signup" ,
+        const res = await axios.post("https://prepdrilbackend.onrender.com/auth/signup" ,
           { name , email , password } , {withCredentials : true} 
         ); 
         setName("") ; 

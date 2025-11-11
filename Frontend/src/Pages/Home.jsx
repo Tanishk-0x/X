@@ -24,7 +24,7 @@ const Home = () => {
 
 
     const LogOut = async () => {
-         await axios.get("http://localhost:5000/auth/logout" ,
+         await axios.get("https://prepdrilbackend.onrender.com/auth/logout" ,
              {withCredentials : true}); 
              toast("LogOut SuccessFully")
             navigate('/login') ; 
