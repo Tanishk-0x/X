@@ -6,11 +6,17 @@ const app = express() ;
 require('./src/Config/database').dbConnect() ; 
 require('dotenv').config() ; 
 const cookieParser = require('cookie-parser'); 
+const cors = require('cors') ; 
 
 const PORT = 5000 ; 
 
 app.use(express.json()); 
 app.use(cookieParser()); 
+
+app.use(cors({
+    origin : 'http://localhost:5173' , 
+    credentials : true 
+}));
 
 app.use('/ai' , aiRoute) ; 
 app.use('/auth' , authRoutes) ; 

@@ -23,17 +23,9 @@ const UserSchema = new mongoose.Schema({
         type : Number , 
         default : 0 
     }, 
-    previous : [
-        {
-            value : {
-                type : String 
-            }, 
-            time : {
-                type : Date , 
-                default : Date.now() 
-            }
-        }
-    ]
+    previous : {
+        type : String , 
+    }
 
 }); 
 

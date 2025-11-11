@@ -24,10 +24,6 @@ const Signup = async (req , res) => {
         res.status(201).json({
             success : true , 
             message : "Signup SuccessFully✅" , 
-            name : name , 
-            email : email , 
-            password : password , 
-            hashedPassword : HashedPassword
         })
     }
 
@@ -74,7 +70,6 @@ const Login = async (req , res) => {
         res.status(201).json({
             success : true , 
             message : "Login SuccessFully✅" , 
-            token : token , 
         })
     }
     

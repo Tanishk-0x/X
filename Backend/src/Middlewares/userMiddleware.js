@@ -4,9 +4,15 @@ const User = require('../Models/UserModel');
 const userMiddleware = async(req , res , next) => {
     try {
         const code = req.body.code ; 
+        const flag = req.body.flag ; 
         const user = await User.findById(req.user.id);
-        user.totalTest += 1 ;
-        user.previous.push({value : code}); 
+        
+
+        if(flag === '0'){
+            user.previous = code ; 
+            user.totalTest += 1 ;
+        }
+        
         await user.save() ; 
         next() ;
     }
