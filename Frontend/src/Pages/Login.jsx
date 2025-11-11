@@ -20,12 +20,12 @@ const Login = () => {
       setLoading(true) ; 
       const res = await axios.post("http://localhost:5000/auth/login" ,
        {email , password} , {withCredentials : true} ); 
-      console.log(res.data) ; 
+      localStorage.setItem('xyz' , true) ; 
       setLoading(false) ; 
       setEmail("") ; 
       setPassword("") ; 
       toast(res.data.message) ; 
-      navigate('/')
+      navigate('/'); 
     }
     
     catch (error) {

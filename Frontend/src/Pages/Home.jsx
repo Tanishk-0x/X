@@ -1,13 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../Style/Home.css';
 import heroImg from '../Assets/heroimg.jpg'; 
 import { FaBolt, FaRocket, FaStar, FaShieldAlt, FaLightbulb, FaEnvelope, FaMapMarkerAlt, FaPhone } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+import { CgLogIn } from "react-icons/cg";
+import demo from '../Assets/demo.mp4';
+import axios from 'axios' ; 
+import toast from 'react-hot-toast';
+
 
 const Home = () => {
 
-  //~---------------------------------------------------------------------------
+    const navigate = useNavigate() ; 
+    const [auth , setAuth] = useState(false) ; 
 
-  //~---------------------------------------------------------------------------
+    useEffect(()=>{
+        const val = localStorage.getItem('xyz'); 
+        if(val === 'true'){
+            setAuth(true) ; 
+        }
+
+    },[]); 
+
+
+    const LogOut = async () => {
+         await axios.get("http://localhost:5000/auth/logout" ,
+             {withCredentials : true}); 
+             toast("LogOut SuccessFully")
+            navigate('/login') ; 
+    }
+
+
 
 
     return (
@@ -17,30 +40,28 @@ const Home = () => {
             <header className="home-header">
                 <div className='h-logo-container'>
                     <p className='h-heading'>
-                        <FaBolt className='logo-icon' /> NAME <span className='logo-highlight'>LOGO</span>
+                        <FaBolt className='logo-icon' /><span className='logo-highlight'>The PrepDrill</span>
                     </p>
                 </div>
-                <nav className='h-nav'>
-                    <a href="#features" className='nav-link'>Features</a>
-                    <a href="#demo" className='nav-link'>Demo</a> 
-                    <a href="#contact" className='nav-link'>Contact</a>
-                </nav>
                 <div>
-                    <button className='h-btn'>Login</button>
+                    {
+                        auth ? <button className='h-btn' onClick={LogOut}>Logout</button> : 
+                        <button className='h-btn' onClick={() => navigate('/login')}>Login</button>
+                    }
                 </div>
             </header>
 
             <section className="h-section">
                 <div className="hero-left">
                     <h1 className='l-1'>
-                        The Ultimate <span className='highlight-text'>Solution</span> for Your Digital Needs
+                        Stop guessing <span className='highlight-text'>Questions,</span> start practicing mastery
                     </h1>
                     <p className='l-2'>
-                        Harness the power of seamless integration and lightning-fast performance. Stop managing, start creating.
+                        Practice any technical subject with AI-generated questions, timed answers, and instant performance reports.
                     </p>
                     <div className='hero-cta'>
-                        <button className='h-btn primary-cta'>Get Started</button>
-                        <button className='h-btn secondary-cta'>Learn More</button>
+                        <button className='h-btn primary-cta' onClick={() => navigate('/main')}>Get Started</button>
+                        <a href="#demo"><button className='h-btn secondary-cta'>Watch Demo</button></a>
                     </div>
                 </div>
 
@@ -54,18 +75,18 @@ const Home = () => {
                 <div className="features-grid">
                     <div className="feat">
                         <FaRocket className='feat-icon' />
-                        <h3>Speed</h3>
-                        <p>Lightning-fast performance guaranteed.</p>
+                        <h3>Topics</h3>
+                        <p>Practice any tech subject.</p>
                     </div>
                     <div className="feat">
                         <FaStar className='feat-icon' />
-                        <h3>Reliable</h3>
-                        <p>99.9% Uptime and constant stability.</p>
+                        <h3>Feedback</h3>
+                        <p>Actionable steps for mastery.</p>
                     </div>
                     <div className="feat">
                         <FaShieldAlt className='feat-icon' />
-                        <h3>Secure</h3>
-                        <p>Industry-leading encryption and protection.</p>
+                        <h3>Review</h3>
+                        <p>Compare against model answer.</p>
                     </div>
                     <div className="feat desktop-only">
                         <FaLightbulb className='feat-icon' />
@@ -82,47 +103,43 @@ const Home = () => {
                 <div className="video-player-container">
                     <video 
                         className="demo-video"
-                        controls
-                        poster="YOUR_VIDEO_POSTER_IMAGE.jpg" 
-                        title="Project Demo Video" 
+                        title="Demo" 
+                        autoPlay
+                        muted 
+                        loop
                     >
-                        <source src="YOUR_VIDEO_FILE.mp4" type="video/mp4" />
-                        Your browser does not support the video tag.
+                        <source src={demo} type="video/mp4" />
                     </video>
                 </div>
             </section>
 
             <section className="cta-section">
-                <h2 className='cta-title'>Ready to Transform Your Workflow?</h2>
-                <p className='cta-subtitle'>Join thousands of satisfied users and start for free today. No credit card required.</p>
-                <button className='h-btn primary-cta large-cta'>Start Your Free Trial</button>
+                <h2 className='cta-title'>Ready to Transform Your Preparation?</h2>
+                <p className='cta-subtitle'>Your AI interview coach gives instant feedback, detailed scores, and personalized mastery reports now.</p>
+                <button className='h-btn primary-cta large-cta' onClick={() => { auth ? navigate('/main') : navigate('/login') }}>Start Preparation</button>
             </section>
             
             <footer id="contact" className="home-footer">
                 <div className="footer-content">
                     <div className="footer-logo">
                         <p className='h-heading footer-heading'>
-                            <FaBolt className='logo-icon' /> NAME <span className='logo-highlight'>LOGO</span>
+                            <FaBolt className='logo-icon' /><span className='logo-highlight'>The PrepDrill</span>
                         </p>
-                        <p className='footer-tagline'>Built for performance, designed for you.</p>
+                        <p className='footer-tagline'>Built for scoring, designed for learning.</p>
                     </div>
                     
                     <div className="footer-links">
                         <h4>Quick Links</h4>
                         <a href="#features">Features</a>
-                        <a href="#">Terms of Service</a>
-                        <a href="#">Privacy Policy</a>
+                        <a href="#demo">Demo</a>
                     </div>
 
                     <div className="footer-contact">
                         <h4>Contact</h4>
-                        <p><FaEnvelope className='contact-icon' /> support@namelogo.com</p>
-                        <p><FaPhone className='contact-icon' /> +1 234 567 890</p>
-                        <p><FaMapMarkerAlt className='contact-icon' /> 123 Digital St, Tech City</p>
+                        <p><FaEnvelope className='contact-icon' /> prepdrill009@gmail.com</p>
+                        <p><FaPhone className='contact-icon' /> +91 234 567 890</p>
+                        <p><FaMapMarkerAlt className='contact-icon' /> 123 Indore MadhyaPradesh</p>
                     </div>
-                </div>
-                <div className="footer-bottom">
-                   NAME LOGO. All rights reserved.
                 </div>
             </footer>
 

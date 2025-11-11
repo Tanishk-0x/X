@@ -21,7 +21,6 @@ const Signup = () => {
         const res = await axios.post("http://localhost:5000/auth/signup" ,
           { name , email , password } , {withCredentials : true} 
         ); 
-        console.log(res) ; 
         setName("") ; 
         setEmail("") ; 
         setPassword("") ; 

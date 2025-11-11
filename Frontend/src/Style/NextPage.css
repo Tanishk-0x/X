@@ -133,6 +133,12 @@
     font-weight: 700;
 }
 
+.n-prev {
+    font-size: 18px;
+    text-align: center;
+}
+
+
 .n-questions {
     height: 100px;
     width: 90%;
@@ -177,9 +183,18 @@
 .que {
     font-size: 20px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    padding: 0px 15px;
     align-items: center;    height: 100%;
     width: 90%;
+}
+
+.que p {
+    color: #e69528;
+}
+
+.que p span {
+    color: aliceblue;
 }
 
 .q-controls{
@@ -209,6 +224,7 @@
     justify-content: center;
     align-items: center;
     border-top: 1px solid #2e2e2e;
+    color: gray;
 }
 
 .answer{
@@ -238,9 +254,17 @@
     width: 75%;
     height: 98%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    padding: 0px 14px;
+    padding: 0px 10px;
+}
+
+.act-hint p {
+    font-size: 18px;
+}
+
+.act-hint p span {
+    color: rgb(169, 169, 169);
 }
 
 .h-controls{
@@ -331,4 +355,80 @@
     padding: 0px 5px ; 
     background-color: transparent;
 }
+
+.next-page-btns{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.report-container {
+  width: 90%;
+  margin: 2rem auto;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+}
+
+.report-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #ffb400;
+}
+
+.r-score{
+    color: #ffb400;
+}
+
+.total-score {
+  text-align: center;
+  font-size: 1.2rem;
+  background: #222;
+  padding: 0.8rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+}
+
+.cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.card {
+  background: #1f1f1f;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+}
+
+.q-title {
+  font-size: 1.3rem;
+  color: #ffb400 ; 
+  margin-bottom: 0.8rem;
+}
+
+.remark-section p {
+  margin: 0.4rem 0;
+  line-height: 1.4;
+}
+
+.remark-section strong {
+  color: #ffb400;
+}
+
+
+.temp-score{
+    font-size: 14px;
+    margin-top: 5px;
+    color: gray;
+}
+
 

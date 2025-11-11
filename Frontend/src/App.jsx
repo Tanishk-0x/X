@@ -19,7 +19,13 @@ function App() {
         <Route path='/main' element={<NextPage/>}/>
       </Routes>
 
-      <Toaster />
+      <Toaster toastOptions={{
+        style: {
+          background: '#e68200ff',
+          color: '#000000ff',
+          fontSize : "16px" , 
+        },
+      }}/>
     </>
   )
 }
